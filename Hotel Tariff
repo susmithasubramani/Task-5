@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class HotelTariffCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter the month number (1-12): ");
+        int month = scanner.nextInt();
+
+        System.out.print("Enter the room rent per day: ");
+        double rentPerDay = scanner.nextDouble();
+
+        System.out.print("Enter the number of days stayed: ");
+        int numberOfDays = scanner.nextInt();
+
+        // Peak season months: April(4), May(5), June(6), November(11), December(12)
+        boolean isPeakSeason = false;
+
+        switch (month) {
+            case 4:
+            case 5:
+            case 6:
+            case 11:
+            case 12:
+                isPeakSeason = true;
+                break;
+            default:
+                isPeakSeason = false;
+        }
+
+        if (isPeakSeason) {
+            rentPerDay = rentPerDay + (rentPerDay * 0.20); // increase by 20%
+        }
+
+        double totalTariff = rentPerDay * numberOfDays;
+
+        // Output with 2 decimal places
+        System.out.printf("%.2f\n", totalTariff);
+
+        scanner.close();
+    }
+}
