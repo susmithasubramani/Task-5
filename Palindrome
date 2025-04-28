@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get input string from user
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        boolean isPalindrome = true;
+
+        // Convert the string to lowercase to make it case-insensitive (optional)
+        input = input.toLowerCase();
+
+        int length = input.length();
+
+        // Check each character from start and end
+        for (int i = 0; i < length / 2; i++) {
+            if (input.charAt(i) != input.charAt(length - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Output the result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
+
+        scanner.close();
+    }
+}
